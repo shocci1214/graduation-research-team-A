@@ -1,0 +1,51 @@
+body {
+    background-color: forestgreen
+}
+
+table {
+    background-color: #fff
+}
+
+
+td {
+    font-size: 30px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.button-1 {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 1px;
+    background-color: red;
+}
+.button-2 {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 1px;
+    background-color: blue;
+}
+.button-3 {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 1px;
+    background-color: orange;
+}
+.button-4 {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 1px;
+    background-color: green;
+}
+.button-5 {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 1px;
+    background-color: gold;
+}
