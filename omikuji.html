@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>おみくじ</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <div id="btn">?</div>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>sample1</title>
+</head>
+<body>
+  <button onclick="changeImage()">おみくじを引く</button>
+  <br>
+  <img id="image_place"src="omikuji.png"/>
+  <script type="text/javascript">
+    // img要素を取得する
+    var img = document.getElementById("image_place");
+    // 表示する画像番号
+    var idx;
 
+    // 画像を切り替える関数
+    function changeImage() {
+      const idx = Math.random();
+      
+      if(idx < 0.1){
+        img.src = "image" + 1 + ".jpeg";
+        }else if(idx < 0.5){
+            img.src = "image" + 2 + ".jpeg";
+        }else{
+            img.src = "image" + 3 + ".jpeg";
+        }
 
-
-
-        <script src="js/main.js"></script>
-
-        <h2><a href="index.html">戻る</a></h2>
-    </body>
-
+      // img要素のsrcに画像ファイル名を設定する
+      // img.src = "image" + idx + ".jpeg";
+    }
+  </script>
+</body>
 </html>
