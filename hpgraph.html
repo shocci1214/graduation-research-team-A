@@ -6,6 +6,7 @@
 </head>
 <body>
     <h3>webページ練習</h3>
+<p>HPゲージ1</p>
 <div class="gauge">
     <!--labelはテキスト-->
     <span class="label">0%</span>
@@ -14,30 +15,49 @@
 		<span class="label">0%</span>
 	</span>
 </div>
+
+  
+
 <h2><a href="index.html">戻る</a></h2>
 
 </body>
 
 <!--javascript-->
 <script>
+//ゲージの更新 第1引数はゲージ要素、第２引数は,1から99までの数値
 function updateGauage(elem, n){
-	const percent_str = ~~n + "%"
-	elem.style.setProperty("--percent", percent_str)
+    // ゲージのパーセント定義
+    // ~~は何か？ビット否定演算子　-> 小数点以下切り捨て
+    // (わたってくるのは現状1から99なので、現状は不要？)
+    const percent_str = ~~n + "%"
+    //
+    elem.style.setProperty("--percent", percent_str)
+    //ラベルの更新
 	for(const label of elem.querySelectorAll(".label")){
 		label.textContent = percent_str
 	}
 }
 
 let v = 0
+//uerySelector() メソッド
+//指定されたセレクターまたはセレクターのグループに一致する、
+//書内の最初の Element を返す
 const elem = document.querySelector(".gauge")
+//50ミリ秒ごとにゲージを増やす
 setInterval(_ => {
-	updateGauage(elem, ++v % 100)
+    //updateGauageを呼び出す
+    //第1引数にゲージ要素、第2引数は1,2,3...99,1,2,3...ような1から99までの数値が渡される
+    if(v != 100){
+      updateGauage(elem, ++v % 100)
+    }else{
+
+    }
 }, 50)
 
 </script>
 
 <!--スタイルシート-->
-<style> 
+<style>
     .gauge{
         width: 120px;
         height: 20px;
@@ -51,7 +71,7 @@ setInterval(_ => {
         background: #126ece;
         /*100%を超えたらゲージ外の部分を非表示にする*/
         /*ゲージの可変部分(右方向を計算している上下左は0で固定)*/
-        clip-path: inset(0 50% 0 0);
+        clip-path: inset(0 calc(100% - var(--percent, 100%)) 0 0);
         display: block;
     }
     .gauge .label {
@@ -68,4 +88,18 @@ setInterval(_ => {
     .gauge>.label {
         z-index: 0;
     }
-    </style>
+
+.gauge_wrap li > div {
+    background: -moz-linear-gradient(top, #555, #222);
+    background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#222));
+    border: solid 5px #000;
+    width: 300px;
+    height: 32px;
+}
+ 
+.gauge_wrap .gauge_main {
+    background: -moz-linear-gradient(top, #9FF, #0FF);
+    background: -webkit-gradient(linear, left top, left bottom, from(#9FF), to(#0FF));
+    height: 22px;
+}
+</style>
