@@ -1,0 +1,86 @@
+<style>
+    .gauge_wrap{
+        border: solid 5px #000;
+        width: 300px;
+        height: 22px;
+    }
+
+    .gauge_wrap #gauge_main {
+        background: blue;
+        height: 22px;
+    }
+</style>
+
+
+
+<label>体力数値を入力：<input type="number" id="power_value"></label>
+<input type="button" value="体力変更" onclick="changeGauge()" />
+<!-- 体力ゲージ -->
+<div class="gauge_wrap"> 
+    <div id="gauge_main" style="width: 50%;"></div>
+</div>
+
+<p>回復</p>
+<input type="button" value="キズぐすり（20）" onclick="recoveryGauge(20)" />
+<input type="button" value="いいキズぐすり（50）" onclick="recoveryGauge(50)" />
+<input type="button" value="すごいキズぐすり（80）" onclick="recoveryGauge(80)" />
+<input type="button" value="満タンのくすり" onclick="recoveryGauge(1000)" />
+<p>トレーニング</p>
+<input type="button" value="お散歩（-5）" onclick="recoveryGauge(-5)" />
+<p>観察</p>
+<input type="button" value="様子をみる" onclick="watchrabbit()" />
+<!-- <input type="button" value="押してね" onclick="zakoga()" /> -->
+
+<div id="usagi_gazou">ウサギの画像</div>
+
+<script>
+        function changeGauge(){
+            //テキストボックスの値を取得
+            let value = document.getElementById("power_value").value;
+            const gauge = document.getElementById("gauge_main");
+    
+            if(value > 100){
+                value = 100;
+            }
+            //体力ゲージのwidthを変更する
+            gauge.style.width = value + '%';
+        }
+    
+        function recoveryGauge(recovery){
+            //回復の値を取得
+            let value = recovery;
+            const gauge = document.getElementById("gauge_main");
+            if (parseInt(gauge.style.width, 10) <= 0){
+                document.write("体力がありません‼");
+                document.write('<img src="うさぎしにかけ.png" alt="しにかけ">');
+            }
+            let hp = parseInt(gauge.style.width, 10) + recovery;
+            if(hp > 100){
+                hp = 100;
+            }
+            //体力ゲージのwidthを変更する
+            gauge.style.width = hp + '%';
+        }
+    
+        function watchrabbit(){
+            //体力ゲージのwidthを取得
+            const gauge = document.getElementById("gauge_main").style.width;
+            var usagi_gazou = document.getElementById('usagi_gazou')
+            usagi_gazou.innerHTML = '<h1>雑魚が‼‼</h1>'
+            //アラートでwidthを表示
+            // alert(parseInt(gauge, 10))
+        if (parseInt(gauge, 10) < 10) {
+            usagi_gazou.innerHTML = '<img src="うさぎしにかけ.png" alt="しにかけ" width="300px" height="300px">';
+        }else if(parseInt(gauge, 10) < 50){
+            usagi_gazou.innerHTML = '<img src="uuusagi.jpg" alt="普通" width="300px" height="300px">';
+        }else{
+            usagi_gazou.innerHTML = '<img src="genkiusagi.jpg" alt="元気" width="300px" height="300px">';
+            }
+        }
+        // function zakoga(){
+
+        
+        // var greet = document.getElementById('greet')
+        // greet.innerHTML = '<h1>雑魚が‼‼</h1>'
+        // }
+    </script>
