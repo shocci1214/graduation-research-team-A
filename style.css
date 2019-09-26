@@ -33,3 +33,18 @@
     border-radius: 1px;
     background-color: gold;
 }
+body {
+    background-color: rgb(247, 189, 31);
+}
+
+body p {
+    background-color: silver;
+    text-align: center;
+    color: brown;
+}
+
+body > h1 {
+    background-color: skyblue;
+    text-align: center;
+
+}
